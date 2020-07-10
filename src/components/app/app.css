@@ -1,0 +1,11 @@
+.app
+{
+    margin: 0px;
+    background-color:rgb(58, 53, 53);
+}
+
+.panel-wr
+{
+    display: flex;
+    justify-content: center;
+}

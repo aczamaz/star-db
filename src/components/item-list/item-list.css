@@ -1,0 +1,8 @@
+.item-list
+{
+    display: flex;
+    margin: 0 0px;
+    background-color: grey;
+    width: 495px;
+    flex-direction: column;
+}
