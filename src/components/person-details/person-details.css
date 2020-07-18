@@ -1,0 +1,31 @@
+.person-details
+{
+    display: flex;
+    background-color: grey;
+    border-radius: 30px;
+    width: -webkit-fill-available;
+    height: min-content;
+    margin-top: 30px;
+}
+.person-details__img
+{
+    width: 300px;
+    border-radius: 30px;
+    margin: 20px;
+}
+.person-details__name
+{
+    font-size: 25px;
+    margin-top:30px;
+}
+.person-details__list
+{
+    margin-left:10px;
+    margin-top:15px;
+}
+.person-details__list-item
+{
+    margin-bottom: 5px;
+    border-top: #abaaaa 1px solid;
+    padding: 8px 3px;
+}

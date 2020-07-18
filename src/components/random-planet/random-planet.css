@@ -24,4 +24,6 @@
 .random-planet__list-item
 {
     margin-bottom: 5px;
+    border-top: #abaaaa 1px solid;
+    padding: 8px 3px;
 }

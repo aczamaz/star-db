@@ -16,6 +16,15 @@ class ItemList extends Component
                 <div className="item-list__item">
                     R2-D2
                 </div>
+                <div className="item-list__item">
+                    Romi Rain
+                </div>
+                <div className="item-list__item">
+                    Lisa Ann
+                </div>
+                <div className="item-list__item">
+                    Sasha grey
+                </div>
             </div>
         )
     }
