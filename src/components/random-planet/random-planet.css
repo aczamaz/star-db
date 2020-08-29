@@ -27,3 +27,7 @@
     border-top: #abaaaa 1px solid;
     padding: 8px 3px;
 }
+.random-planet .lds-roller
+{
+    margin:0 auto;
+}
