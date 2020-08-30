@@ -7,6 +7,10 @@
     height: min-content;
     margin-top: 30px;
 }
+.person-details span
+{
+    padding:10px;
+}
 .person-details__img
 {
     width: 300px;

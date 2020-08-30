@@ -9,9 +9,9 @@ export default class App extends Component
     state = {
         id: null
     }
-    setItem(id)
+    setItem = (id)=>
     {
-        console.log(id);
+        this.setState({id});
     }
     render()
     {
@@ -21,7 +21,7 @@ export default class App extends Component
                 <RandomPlanet/>
                 <div className="panel-wr">
                     <ItemList onSetItem = {this.setItem}/>
-                    <PersonDetails/>
+                    <PersonDetails itemId = {this.state.id}/>
                 </div>
             </div>
         )
