@@ -1,30 +1,47 @@
 import React,{Component} from 'react';
 import './item-list.css';
-
+import SwapiService from '../../services/swapi-services';
+import Spinner from '../spinner';
 class ItemList extends Component
 {
+    SwapiService = new SwapiService();
+    state = {
+        itemList: null
+    }
+    componentDidMount()
+    {
+        this.SwapiService
+            .getAllPeople()
+            .then((itemList)=>
+                {
+                    this.setState({itemList});
+                }
+            );
+    }
+    _getFomatedItems = (items) =>
+    {
+        return items.map(({id,name})=>{
+            return(
+                <div
+                    className="item-list__item"
+                    key={id}
+                    onClick={()=>this.props.onSetItem(id)}
+                >
+                    {name}
+                </div>
+            );
+            
+        })
+    }
     render()
     {
+        const {itemList} = this.state;
+        if (!itemList)
+            return <Spinner/>;
+        const items = this._getFomatedItems(itemList);
         return(
             <div className="item-list">
-                <div className="item-list__item">
-                    Luke Skywalker
-                </div>
-                <div className="item-list__item">
-                    Dart Vader
-                </div>
-                <div className="item-list__item">
-                    R2-D2
-                </div>
-                <div className="item-list__item">
-                    Romi Rain
-                </div>
-                <div className="item-list__item">
-                    Lisa Ann
-                </div>
-                <div className="item-list__item">
-                    Sasha grey
-                </div>
+                {items}
             </div>
         )
     }

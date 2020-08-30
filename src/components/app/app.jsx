@@ -6,6 +6,13 @@ import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 export default class App extends Component
 {
+    state = {
+        id: null
+    }
+    setItem(id)
+    {
+        console.log(id);
+    }
     render()
     {
         return(
@@ -13,7 +20,7 @@ export default class App extends Component
                 <Header/>
                 <RandomPlanet/>
                 <div className="panel-wr">
-                    <ItemList/>
+                    <ItemList onSetItem = {this.setItem}/>
                     <PersonDetails/>
                 </div>
             </div>
