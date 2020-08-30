@@ -11,13 +11,11 @@ export default class RandomPlanet extends Component
         planet: {},
         loading:true,
         error:false
-    };
-
-    constructor() {
-        super();
+    }
+    componentDidMount()
+    {
         this.updatePlanet();
     }
-
     onPlanetLoaded = (planet) => 
     {
         this.setState({ planet ,loading:false});
