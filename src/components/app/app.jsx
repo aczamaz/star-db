@@ -5,7 +5,7 @@ import RandomPlanet from '../random-planet';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 import SwapiService from '../../services/swapi-services';
-
+import Row from '../row';
 export default class App extends Component
 {
     swapiService = new SwapiService()
@@ -19,18 +19,23 @@ export default class App extends Component
     }
     render()
     {
+        const itemList =
+        (
+            <ItemList
+                onSetItem={this.setItem}
+                getResouse={this.swapiService.getAllPeople}
+                renderFunction={(item) => { return `${item.name}` }}
+            />
+        );
+        const personDetails = 
+        (
+            <PersonDetails itemId={this.state.id} />
+        );
         return(
             <div className="app">
                 <Header/>
                 <RandomPlanet/>
-                <div className="panel-wr">
-                    <ItemList
-                        onSetItem = {this.setItem}
-                        getResouse={this.swapiService.getAllPeople}
-                        renderFunction={(item) => { return `${item.name}`}}
-                    />
-                    <PersonDetails itemId = {this.state.id}/>
-                </div>
+                <Row left={itemList} right={personDetails}/>
             </div>
         )
     }

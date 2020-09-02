@@ -1,0 +1,7 @@
+.panel-wr
+{
+    display: flex;
+    justify-content: space-evenly;
+    margin:0 150px;
+    border-radius: 40px;
+}
