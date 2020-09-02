@@ -1,22 +1,19 @@
 import React,{Component} from 'react';
 import './item-list.css';
-import SwapiService from '../../services/swapi-services';
 import Spinner from '../spinner';
 class ItemList extends Component
 {
-    SwapiService = new SwapiService();
     state = {
         itemList: null
     }
     componentDidMount()
     {
-        this.SwapiService
-            .getAllPeople()
-            .then((itemList)=>
-                {
-                    this.setState({itemList});
-                }
-            );
+        this.props.getResouse()
+        .then((itemList)=>
+            {
+                this.setState({itemList});
+            }
+        );
     }
     _getFomatedItems = (items) =>
     {
