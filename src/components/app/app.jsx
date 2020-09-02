@@ -6,6 +6,7 @@ import ItemList from '../item-list';
 import PersonDetails from '../person-details';
 import SwapiService from '../../services/swapi-services';
 import Row from '../row';
+import ErrorBoundry from '../error-boundry';
 export default class App extends Component
 {
     swapiService = new SwapiService()
@@ -35,7 +36,9 @@ export default class App extends Component
             <div className="app">
                 <Header/>
                 <RandomPlanet/>
-                <Row left={itemList} right={personDetails}/>
+                <ErrorBoundry>
+                    <Row left={itemList} right={personDetails}/>
+                </ErrorBoundry>
             </div>
         )
     }
