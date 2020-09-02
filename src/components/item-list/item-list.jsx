@@ -8,7 +8,8 @@ class ItemList extends Component
     }
     componentDidMount()
     {
-        this.props.getResouse()
+        const {getResouse} = this.props;
+        getResouse()
         .then((itemList)=>
             {
                 this.setState({itemList});
@@ -17,14 +18,17 @@ class ItemList extends Component
     }
     _getFomatedItems = (items) =>
     {
-        return items.map(({id,name})=>{
+        const {renderFunction} = this.props;
+        return items.map((item)=>{
+            const {id} = item;
+            const label = renderFunction(item);
             return(
                 <div
                     className="item-list__item"
                     key={id}
                     onClick={()=>this.props.onSetItem(id)}
                 >
-                    {name}
+                    {label}
                 </div>
             );
             

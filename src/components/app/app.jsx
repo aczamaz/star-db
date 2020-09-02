@@ -27,6 +27,7 @@ export default class App extends Component
                     <ItemList
                         onSetItem = {this.setItem}
                         getResouse={this.swapiService.getAllPeople}
+                        renderFunction={(item) => { return `${item.name}`}}
                     />
                     <PersonDetails itemId = {this.state.id}/>
                 </div>
