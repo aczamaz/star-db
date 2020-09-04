@@ -1,4 +1,4 @@
-.person-details
+.item-details
 {
     display: flex;
     background-color: grey;
@@ -7,27 +7,27 @@
     height: min-content;
     margin-top: 30px;
 }
-.person-details span
+.item-details span
 {
     padding:10px;
 }
-.person-details__img
+.item-details__img
 {
     width: 300px;
     border-radius: 30px;
     margin: 20px;
 }
-.person-details__name
+.item-details__name
 {
     font-size: 25px;
     margin-top:30px;
 }
-.person-details__list
+.item-details__list
 {
     margin-left:10px;
     margin-top:15px;
 }
-.person-details__list-item
+.item-details__list-item
 {
     margin-bottom: 5px;
     border-top: #abaaaa 1px solid;

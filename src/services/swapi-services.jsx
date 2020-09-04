@@ -1,7 +1,7 @@
 export default class SwapiService
 {
     _apiBase = 'https://swapi.dev/api';
-   
+    _imageBase = 'https://starwars-visualguide.com/assets/img/';
     getResource = async (url) =>
     {
         const res = await fetch(`${this._apiBase}${url}`);
@@ -54,22 +54,35 @@ export default class SwapiService
         const idRegExp = /\/([0-9]*)\/$/;
         return item.url.match(idRegExp)[1];
     }
+    _getPersonImageUrl = (id) =>
+    {
+        return `${this._imageBase}characters/${id}.jpg`;
+    }
+    _getStarshipImageUrl = (id) => {
+        return `${this._imageBase}starships/${id}.jpg`;
+    }
+    _getPlanetsImageUrl = (id) => {
+        return `${this._imageBase}planets/${id}.jpg`;
+    }
 
     _transformPlanet = (planet) =>
     {
+        const id = this._extractId(planet);
         return {
-            id: this._extractId(planet),
+            id,
             name: planet.name,
             population: planet.population,
             rotationPeriod: planet.rotation_period,
-            diameter: planet.diameter
+            diameter: planet.diameter,
+            image:this._getPlanetsImageUrl(id)
         };
     }
 
     _transformStarship = (starship) =>
     {
+        const id = this._extractId(starship);
         return {
-            id: this._extractId(starship),
+            id,
             name: starship.name,
             model: starship.model,
             manufacturer: starship.manufacturer,
@@ -77,18 +90,21 @@ export default class SwapiService
             length: starship.length,
             crew: starship.crew,
             passengers: starship.passengers,
-            cargoCapacity: starship.cargoCapacity
+            cargoCapacity: starship.cargoCapacity,
+            image: this._getStarshipImageUrl(id)
         }
     }
 
     _transformPerson = (person) =>
     {
+        const id = this._extractId(person);
         return {
-            id: this._extractId(person),
+            id,
             name: person.name,
             gender: person.gender,
             birthYear: person.birth_year,
-            eyeColor: person.eye_color
+            eyeColor: person.eye_color,
+            image: this._getPersonImageUrl(id)
         }
     }
 }
