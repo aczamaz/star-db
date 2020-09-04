@@ -34,8 +34,8 @@ export default class ItemDetails extends Component
     {
         if(!this.state.item)
             return (<div className="item-details"><span>choise item please...</span></div>)
-
-        const { id, name, gender, birthYear, eyeColor, image} = this.state.item;
+        const { item } = this.state;
+        const { id, name, image} = item;
 
         return(
             <div
@@ -51,15 +51,13 @@ export default class ItemDetails extends Component
                         {name}
                     </div>
                     <div className="item-details__list">
-                        <div className="item-details__list-item">
-                            getder {gender}
-                        </div>
-                        <div className="item-details__list-item">
-                            birth year {birthYear}
-                        </div>
-                        <div className="item-details__list-item">
-                            eye color {eyeColor}
-                        </div>
+                        {
+                            React.Children.map(this.props.children,(child)=>
+                                {
+                                return React.cloneElement(child, { item})
+                                }
+                            )
+                        }
                     </div>
                 </div>
             </div>

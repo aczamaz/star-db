@@ -7,6 +7,7 @@ import ItemDetails from '../item-details';
 import SwapiService from '../../services/swapi-services';
 import Row from '../row';
 import ErrorBoundry from '../error-boundry';
+import Record from '../record';
 export default class App extends Component
 {
     swapiService = new SwapiService()
@@ -33,7 +34,11 @@ export default class App extends Component
                 <ItemDetails
                     itemId = { this.state.id }
                     getData={ this.swapiService.getPerson }
-                />
+                >
+                    <Record label="gender" field="gender"/>
+                    <Record label="birth year" field="birthYear" />
+                    <Record label="eye color" field="eyeColor" />
+                </ItemDetails>
         );
         return(
             <div className="app">
