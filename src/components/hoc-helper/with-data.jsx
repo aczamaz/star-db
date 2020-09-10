@@ -5,7 +5,19 @@ const withData = (View) => {
         state = {
             data: null
         }
-        componentDidMount() {
+        componentDidUpdate(prevProps)
+        {
+            if(this.props.getData !== prevProps.getData)
+            {
+                this.update();
+            } 
+        }
+        componentDidMount()
+        {
+            this.update();
+        }
+        update()
+        {
             this.props.getData()
                 .then(
                     (data) => {
@@ -13,7 +25,8 @@ const withData = (View) => {
                     }
                 );
         }
-        render() {
+        render()
+        {
             const { data } = this.state;
             if (!data)
                 return <Spinner />;

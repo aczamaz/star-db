@@ -1,7 +1,7 @@
 .header
 {
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .logo
 {
@@ -18,10 +18,19 @@
     list-style: none;
     display: flex;
     justify-content: space-between;
-    margin: auto;
 }
 .menu__item
 {
     font-size:20px;
     color:greenyellow;
+}
+.button
+{
+    height: 2rem;
+    background-color: silver;
+    border-radius: 10px;
+    color: white;
+    margin-top: 10px;
+    outline: none;
+    border: none;
 }

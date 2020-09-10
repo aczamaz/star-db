@@ -4,6 +4,7 @@ export default class Header extends Component
 {
     render()
     {
+        const { onChangeContext } = this.props;
         return(
             <div className="header">
                 <div className="logo">
@@ -20,6 +21,12 @@ export default class Header extends Component
                         Starships
                     </li>                    
                 </ul>
+                <button
+                    className="button"
+                    onClick={onChangeContext}
+                >
+                    change context
+                </button>
             </div>
         )
     }
