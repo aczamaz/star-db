@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Spinner from '../spinner';
-const withData = (View, getResouse) => {
+const withData = (View) => {
     return class extends Component {
         state = {
             data: null
         }
         componentDidMount() {
-            getResouse()
+            this.props.getData()
                 .then(
                     (data) => {
                         this.setState({ data });

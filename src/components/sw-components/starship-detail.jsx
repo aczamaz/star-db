@@ -2,14 +2,10 @@ import React from 'react';
 import ItemDetails from '../item-details';
 import Record from '../record';
 import { withSwapiService } from '../hoc-helper';
-const StartshipDetail = ({itemId, swapiService}) => 
+const StartshipDetail = (props) => 
 {
-    const {getStarship} = swapiService;
     return(
-        <ItemDetails
-            itemId={itemId}
-            getData={getStarship}
-        >
+        <ItemDetails {...props}>
             <Record label="Model" field="model" />
             <Record label="Length" field="length" />
             <Record label="Manufacturer" field="manufacturer" />
@@ -17,5 +13,9 @@ const StartshipDetail = ({itemId, swapiService}) =>
     )
              
 };
-
-export default withSwapiService(StartshipDetail);
+const mapMethodToProps = (swapiService) => {
+    return {
+        getData: swapiService.getStarship
+    }
+};
+export default withSwapiService(StartshipDetail, mapMethodToProps);
