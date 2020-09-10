@@ -5,6 +5,7 @@ import RandomPlanet from '../random-planet';
 import SwapiService from '../../services/swapi-services';
 import Row from '../row';
 import ErrorBoundry from '../error-boundry';
+import {SwapiServiceProvider} from '../swapi-service-context';
 import {
     StartshipList,
     PersonList,
@@ -15,7 +16,7 @@ import {
 } from '../sw-components';
 export default class App extends Component
 {
-    swapiService = new SwapiService()
+    swapiService = new SwapiService();
 
     state = {
         id: null
@@ -40,11 +41,13 @@ export default class App extends Component
         );
         return(
             <div className="app">
-                <Header/>
-                <RandomPlanet/>
-                <ErrorBoundry>
-                    <Row left = {itemList} right={personDetails}/>
-                </ErrorBoundry>
+                <SwapiServiceProvider value={this.swapiService}>
+                    <Header/>
+                    <RandomPlanet/>
+                    <ErrorBoundry>
+                        <Row left = {itemList} right={personDetails}/>
+                    </ErrorBoundry>
+                </SwapiServiceProvider>
             </div>
         )
     }

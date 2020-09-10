@@ -22,4 +22,4 @@ const withData = (View, getResouse) => {
         }
     }
 }
-export default withData;
+export{withData};
