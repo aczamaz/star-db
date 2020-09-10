@@ -2,12 +2,17 @@ import React,{Component} from 'react';
 import './app.css';
 import Header from '../header';
 import RandomPlanet from '../random-planet';
-import ItemList from '../item-list';
-import ItemDetails from '../item-details';
 import SwapiService from '../../services/swapi-services';
 import Row from '../row';
 import ErrorBoundry from '../error-boundry';
-import Record from '../record';
+import {
+    StartshipList,
+    PersonList,
+    PlanetList,
+    StartshipDetail,
+    PersonDetail,
+    PlanetDetail
+} from '../sw-components';
 export default class App extends Component
 {
     swapiService = new SwapiService()
@@ -23,22 +28,15 @@ export default class App extends Component
     {
         const itemList =
         (
-            <ItemList
-                onSetItem = { this.setItem }
-                getResouse = { this.swapiService.getAllPeople }
-                renderFunction = { (item) => { return `${item.name}` } }
-            />
+                <PersonList
+                    onSetItem = { this.setItem }
+                    renderFunction = { (item) => { return `${item.name}` } }
+                />
         );
         const personDetails = 
         (
-                <ItemDetails
-                    itemId = { this.state.id }
-                    getData={ this.swapiService.getPerson }
-                >
-                    <Record label="gender" field="gender"/>
-                    <Record label="birth year" field="birthYear" />
-                    <Record label="eye color" field="eyeColor" />
-                </ItemDetails>
+                <PersonDetail itemId = { this.state.id } />
+                
         );
         return(
             <div className="app">
