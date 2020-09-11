@@ -7,7 +7,9 @@ import PlanetContent from '../planet-content';
 export default class RandomPlanet extends Component
 {
     SwapiService = new SwapiService();
-
+    static defaultProps = {
+        interalValue:10000
+    }
     state = {
         planet: {},
         loading:true,
@@ -16,6 +18,12 @@ export default class RandomPlanet extends Component
     componentDidMount()
     {
         this.updatePlanet();
+        const { interalValue } = this.props;
+        this.interval = setInterval(this.updatePlanet, interalValue);
+    }
+    componentWillUnmount()
+    {
+        clearInterval(this.interval);
     }
     onPlanetLoaded = (planet) => 
     {
@@ -25,7 +33,7 @@ export default class RandomPlanet extends Component
     {
         this.setState({error:true,loading:false});
     }
-    updatePlanet() {
+    updatePlanet= () => {
         const id = Math.floor((Math.random() * 20)) + 1;
         this.SwapiService
             .getPlanet(id)

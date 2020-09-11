@@ -27,4 +27,7 @@ const ItemList = (props) =>
         </div>
     )
 }
+ItemList.defaultProps = {
+  onSetItem:()=>{}
+};
 export default ItemList;
