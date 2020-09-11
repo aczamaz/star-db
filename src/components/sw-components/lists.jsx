@@ -17,9 +17,18 @@ const mapPlanetMethodToProps = (swapiService) => {
         getData: swapiService.getAllPlanets
     }
 }
-const StartshipList = withSwapiService(withData(ItemList),mapStartshipMethodToProps);
-const PersonList = withSwapiService(withData(ItemList),mapPersonMethodToProps);
-const PlanetList = withSwapiService(withData(ItemList),mapPlanetMethodToProps);
+const StartshipList = withSwapiService(mapStartshipMethodToProps)
+(
+    withData(ItemList)
+);
+const PersonList = withSwapiService(mapPersonMethodToProps)
+(
+    withData(ItemList)
+);
+const PlanetList = withSwapiService(mapPlanetMethodToProps)
+(
+    withData(ItemList)
+);
 
 
 export
