@@ -1,13 +1,16 @@
 import React,{Component} from 'react';
 import './item-details.css';
 import SwapiService from '../../services/swapi-services';
-
+import Spinner from "../spinner";
+import ErrorMessage from "../error-message";
 export default class ItemDetails extends Component
 {
     SwapiService = new SwapiService();
     state =
     {
-        item:null
+        item:null,
+        loading:false,
+        error:false
     }
     componentDidMount()
     {
@@ -26,18 +29,28 @@ export default class ItemDetails extends Component
         const { itemId, getData} = this.props;
         if (!itemId)
             return;
+        this.setState({loading:true});
         getData(itemId)
-            .then((item) => {
-                this.setState({ item });
-            })
+            .then(
+                (item) =>
+                {
+                    this.setState({ item });
+                    this.setState({loading:false});
+                }
+            ).catch(
+                this.setState({error:true})
+            )
     }
     render()
     {
         if(!this.state.item)
             return (<div className="item-details"><span>choise item please...</span></div>)
-        const { item } = this.state;
+        const { item,loading,error } = this.state;
         const { id, name, image} = item;
-
+        if(!error)
+            return <ErrorMessage/>;
+        if(loading)
+            return <Spinner/>
         return(
             <div
                 className="item-details"
