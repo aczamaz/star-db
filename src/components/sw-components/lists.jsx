@@ -1,5 +1,9 @@
 import ItemList from '../item-list';
-import {withData,withSwapiService} from '../hoc-helper';
+import {
+    withData,
+    withSwapiService,
+    compose
+} from '../hoc-helper';
 
 const mapPersonMethodToProps = (swapiService)=>
 {
@@ -17,18 +21,18 @@ const mapPlanetMethodToProps = (swapiService) => {
         getData: swapiService.getAllPlanets
     }
 }
-const StartshipList = withSwapiService(mapStartshipMethodToProps)
-(
-    withData(ItemList)
-);
-const PersonList = withSwapiService(mapPersonMethodToProps)
-(
-    withData(ItemList)
-);
-const PlanetList = withSwapiService(mapPlanetMethodToProps)
-(
-    withData(ItemList)
-);
+const StartshipList = compose(
+  withSwapiService(mapStartshipMethodToProps),
+  withData
+)(ItemList);
+const PersonList = compose(
+  withSwapiService(mapPersonMethodToProps),
+  withData
+)(ItemList);
+const PlanetList = compose(
+  withSwapiService(mapPlanetMethodToProps),
+  withData
+)(ItemList);
 
 
 export
