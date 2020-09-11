@@ -1,6 +1,7 @@
 import React from 'react';
 import './item-list.css';
 import Spinner from '../spinner';
+import PropTypes from 'prop-types';
 const ItemList = (props) =>
 {
     const {data} = props;
@@ -29,5 +30,10 @@ const ItemList = (props) =>
 }
 ItemList.defaultProps = {
   onSetItem:()=>{}
+};
+ItemList.propTypes = {
+  onSetItem: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  renderFunction: PropTypes.func.isRequired,
 };
 export default ItemList;
