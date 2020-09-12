@@ -8,7 +8,9 @@ export default class Header extends Component
         const { onChangeContext } = this.props;
         return (
           <div className="header">
-            <div className="logo">Star DB</div>
+            <Link className="logo" to="/">
+              Star DB
+            </Link>
             <ul className="menu">
               <li>
                 <Link className="menu__item" to="/people">
