@@ -27,9 +27,9 @@ export default class App extends Component {
             <Header onChangeContext={this.onMethodChangeContext} />
             <RandomPlanet />
             <Route path="/" render={() => <h2>Welcom to StarDb</h2>} exact />
-            <Route path="/people" component={PersonPage} />
-            <Route path="/planet" component={PlanetPage} />
-            <Route path="/starships" component={StarshipPage} exact/>
+            <Route path="/people/:id?" component={PersonPage} />
+            <Route path="/planet/" component={PlanetPage} />
+            <Route path="/starships/" component={StarshipPage} exact/>
             <Route
               path="/starships/:id"
               render={({match})=>{

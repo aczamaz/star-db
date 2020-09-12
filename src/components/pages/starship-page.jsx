@@ -7,9 +7,7 @@ const StarshipPage = ({history})=>
     return (
       <ErrorBoundry>
         <StartshipList
-          onSetItem={(itemId)=>{
-            history.push(`/starships/${itemId}`);
-          }}
+          onSetItem={(id) => history.push(id)}
           renderFunction={(item) => {
             return `${item.name}`;
           }}

@@ -13,17 +13,17 @@ export default class Header extends Component
             </Link>
             <ul className="menu">
               <li>
-                <Link className="menu__item" to="/people">
+                <Link className="menu__item" to="/people/">
                   People
                 </Link>
               </li>
               <li>
-                <Link className="menu__item" to="/planet">
+                <Link className="menu__item" to="/planet/">
                   Planets
                 </Link>
               </li>
               <li>
-                <Link className="menu__item" to="/starships">
+                <Link className="menu__item" to="/starships/">
                   Starships
                 </Link>
               </li>
